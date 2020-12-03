@@ -3,6 +3,17 @@
 session_start();
 $codigo = $_SESSION['codigo'];
 
+require_once '../controller/conexion.php';
+$sql = "SELECT * FROM persona WHERE codigo = '$codigo'";
+$ejecutar = mysqli_query($conexion, $sql);
+$row = $ejecutar->fetch_array(MYSQLI_ASSOC);
+$nombre = $row['nombre'];
+$documento = $row['documento'];
+$codigo = $row['codigo'];
+$direccion = $row['direccion'];
+$telefono = $row['telefono'];
+$correo = $row['correo'];
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -10,7 +21,7 @@ $codigo = $_SESSION['codigo'];
 <head>
     <?php require_once 'header.php'; ?>
     <!-- Title Page-->
-    <title>Registrar docente</title>
+    <title>Registrar estudiante</title>
 </head>
 
 <body class="animsition">
@@ -32,7 +43,7 @@ $codigo = $_SESSION['codigo'];
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1">Registrar docente</h2>
+                                    <h2 class="title-1">Perfil</h2>
                                     <!--<button class="au-btn au-btn-icon au-btn--blue">
                                         <i class="zmdi zmdi-plus"></i>add item</button>-->
                                 </div>
@@ -42,12 +53,12 @@ $codigo = $_SESSION['codigo'];
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="card">
-                                    <div class="card-header">Registro</div>
+                                    <div class="card-header">Datos</div>
                                     <div class="card-body card-block">
-                                        <form id="FormRegistroProfesor" name="FormRegistroProfesor" action="../model/registrarDocente.php" method="post">
+                                        <form id="FormRegistroEstudiante" name="FormRegistroEstudiante" action="../model/registroEstudiante.php" method="post">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" class="form-control" required>
+                                                    <input type="text" id="nombre" name="nombre" placeholder="<?php echo $nombre ?>" class="form-control" disabled>
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-user"></i>
                                                     </div>
@@ -55,7 +66,7 @@ $codigo = $_SESSION['codigo'];
                                             </div>
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="text" id="cedula" name="cedula" placeholder="C&eacute;dula" class="form-control" required>
+                                                    <input type="text" id="cedula" name="cedula" placeholder="<?php echo $documento ?>" class="form-control" disabled>
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-file"></i>
                                                     </div>
@@ -63,7 +74,7 @@ $codigo = $_SESSION['codigo'];
                                             </div>
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="text" id="codigo" name="codigo" placeholder="C&oacute;digo" class="form-control" required>
+                                                    <input type="text" id="codigo" name="codigo" placeholder="<?php echo $codigo ?>" class="form-control" disabled>
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-credit-card"></i>
                                                     </div>
@@ -71,7 +82,7 @@ $codigo = $_SESSION['codigo'];
                                             </div>
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="text" id="direccion" name="direccion" placeholder="Direcci&oacute;n" class="form-control" required>
+                                                    <input type="text" id="direccion" name="direccion" placeholder="<?php echo $direccion ?>" class="form-control">
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-home"></i>
                                                     </div>
@@ -79,7 +90,7 @@ $codigo = $_SESSION['codigo'];
                                             </div>
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="text" id="telefono" name="telefono" placeholder="Tel&eacute;fono" class="form-control" required>
+                                                    <input type="text" id="telefono" name="telefono" placeholder="<?php echo $telefono ?>" class="form-control">
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-phone"></i>
                                                     </div>
@@ -87,14 +98,14 @@ $codigo = $_SESSION['codigo'];
                                             </div>
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="email" id="correo" name="correo" placeholder="Correo institucional" class="form-control" required>
+                                                    <input type="email" id="correo" name="correo" placeholder="<?php echo $correo ?>" class="form-control" disabled>
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-envelope"></i>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-actions form-group">
-                                                <button type="submit" class="btn btn-danger btn-sm">Registrar</button>
+                                                <button type="submit" class="btn btn-danger btn-sm">Actualizar</button>
                                             </div>
                                         </form>
                                     </div>

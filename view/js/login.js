@@ -13,7 +13,7 @@ $(document).ready(function() {
                 if (resultado.respuesta == 'exitoso') {
                     Swal.fire(
                         'Iniciaste Sesión',
-                        'Bienvenido(a) a Practic',
+                        'Bienvenido(a) a MadeUFPS',
                         'success'
                     )
                     if (resultado.rol == 'admin') {

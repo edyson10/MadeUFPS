@@ -23,7 +23,30 @@ $rol = $_SESSION['rol'];
         <div class="container-fluid">
             <ul class="navbar-mobile__list list-unstyled">
                 <?php if ($rol == '1') { ?>
-
+                    <li class="active has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-book"></i>Curso</a>
+                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                            <li>
+                                <a href="Registrar-curso.php">Registrar curso</a>
+                            </li>
+                            <li>
+                                <a href="Visualizar-curso.php">Ver cursos</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-user"></i>Docente</a>
+                        <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                                <a href="Registrar-docente.php">Registrar docente</a>
+                            </li>
+                            <li>
+                                <a href="Visualizar-docente.php">Ver docentes</a>
+                            </li>
+                        </ul>
+                    </li>
                 <?php } else if ($rol == '2') { ?>
                     <li class="has-sub">
                         <a class="js-arrow" href="#">
@@ -43,6 +66,9 @@ $rol = $_SESSION['rol'];
                         <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                             <li>
                                 <a href="Registrar-estudiante.php">Registrar estudiante</a>
+                            </li>
+                            <li>
+                                <a href="Visualizar-estudiante.php">Ver estudiantes</a>
                             </li>
                             <li>
                                 <a href="Asignar-estudiante.php">Asignar estudiante</a>
@@ -84,6 +110,9 @@ $rol = $_SESSION['rol'];
                             <li>
                                 <a href="Registrar-curso.php">Registrar curso</a>
                             </li>
+                            <li>
+                                <a href="Visualizar-curso.php">Ver cursos</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="has-sub">
@@ -92,6 +121,9 @@ $rol = $_SESSION['rol'];
                         <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                             <li>
                                 <a href="Registrar-docente.php">Registrar docente</a>
+                            </li>
+                            <li>
+                                <a href="Visualizar-docente.php">Ver docentes</a>
                             </li>
                         </ul>
                     </li>
@@ -114,6 +146,9 @@ $rol = $_SESSION['rol'];
                         <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                             <li>
                                 <a href="Registrar-estudiante.php">Registrar estudiante</a>
+                            </li>
+                            <li>
+                                <a href="Visualizar-estudiante.php">Ver estudiantes</a>
                             </li>
                             <li>
                                 <a href="Asignar-estudiante.php">Asignar estudiante</a>

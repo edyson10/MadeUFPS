@@ -67,7 +67,7 @@ $correo = $_SESSION['correo'];
                             </div>
                             <div class="account-dropdown__body">
                                 <div class="account-dropdown__item">
-                                    <a href="#">
+                                    <a href="Perfil.php">
                                         <i class="zmdi zmdi-account"></i>Perfil</a>
                                 </div>
                             </div>

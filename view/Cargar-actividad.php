@@ -3,7 +3,6 @@
 session_start();
 $codigo = $_SESSION['codigo'];
 
-
 ?>
 <!DOCTYPE html>
 <html lang="es">

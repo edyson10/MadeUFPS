@@ -3,7 +3,6 @@
 session_start();
 $codigo = $_SESSION['codigo'];
 
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -45,10 +44,10 @@ $codigo = $_SESSION['codigo'];
                                 <div class="card">
                                     <div class="card-header">Registro</div>
                                     <div class="card-body card-block">
-                                        <form action="" method="post" class="">
+                                        <form id="FormRegistroCurso" name="FormRegistroCurso" action="../model/registrarCurso.php" method="post">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="text" id="nombre" name="nombre" placeholder="Nombre de la materia" class="form-control">
+                                                    <input type="text" id="nombreCurso" name="nombreCurso" placeholder="Nombre de la materia" class="form-control" required>
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-file"></i>
                                                     </div>
@@ -56,14 +55,14 @@ $codigo = $_SESSION['codigo'];
                                             </div>
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="text" id="codigo" name="codigo" placeholder="C&oacute;digo de la materia" class="form-control">
+                                                    <input type="text" id="codigoCurso" name="codigoCurso" placeholder="C&oacute;digo de la materia" class="form-control" required>
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-credit-card"></i>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <select id="materiaAsignar" name="materiaAsignar" class="form-control">
+                                                <select id="docenteCurso" name="docenteCurso" class="form-control">
                                                     <option value="Seleccione">Seleccione el docente</option>
                                                     <?php
                                                     try {
@@ -80,7 +79,7 @@ $codigo = $_SESSION['codigo'];
                                             </div>
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="text" id="cantidad" name="cantidad" placeholder="Cantidad de estudiantes" class="form-control">
+                                                    <input type="text" id="estudiantesCurso" name="estudiantesCurso" placeholder="Cantidad de estudiantes" class="form-control" required>
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-user"></i>
                                                     </div>
