@@ -55,7 +55,7 @@ $correo = $row['correo'];
                                 <div class="card">
                                     <div class="card-header">Datos</div>
                                     <div class="card-body card-block">
-                                        <form id="FormRegistroEstudiante" name="FormRegistroEstudiante" action="../model/registroEstudiante.php" method="post">
+                                        <form id="FormPerfil" name="FormPerfil" action="../model/actualizarDatos.php" method="post">
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <input type="text" id="nombre" name="nombre" placeholder="<?php echo $nombre ?>" class="form-control" disabled>

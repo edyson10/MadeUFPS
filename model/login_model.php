@@ -27,9 +27,6 @@ if ($ingresarTipo == 'Seleccione') {
             $_SESSION['rol'] = '1';
             $_SESSION['usuario'] = $row['nombre'];
             $_SESSION['codigo'] = $row['codigo'];
-            $_SESSION['documento'] = $row['documento'];
-            $_SESSION['direccion'] = $row['direccion'];
-            $_SESSION['telefono'] = $row['telefono'];
             $_SESSION['correo'] = $row['correo'];
             $respuesta = array(
                 'respuesta' => 'exitoso',
@@ -48,9 +45,6 @@ if ($ingresarTipo == 'Seleccione') {
             $_SESSION['rol'] = '2';
             $_SESSION['usuario'] = $row['nombre'];
             $_SESSION['codigo'] = $row['codigo'];
-            $_SESSION['documento'] = $row['documento'];
-            $_SESSION['direccion'] = $row['direccion'];
-            $_SESSION['telefono'] = $row['telefono'];
             $_SESSION['correo'] = $row['correo'];
             $respuesta = array(
                 'respuesta' => 'exitoso',
@@ -69,9 +63,6 @@ if ($ingresarTipo == 'Seleccione') {
             $_SESSION['rol'] = '3';
             $_SESSION['usuario'] = $row['nombre'];
             $_SESSION['codigo'] = $row['codigo'];
-            $_SESSION['documento'] = $row['documento'];
-            $_SESSION['direccion'] = $row['direccion'];
-            $_SESSION['telefono'] = $row['telefono'];
             $_SESSION['correo'] = $row['correo'];
             $respuesta = array(
                 'respuesta' => 'exitoso',

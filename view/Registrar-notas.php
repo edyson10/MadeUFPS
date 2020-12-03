@@ -81,7 +81,7 @@ $codigo = $_SESSION['codigo'];
                                                     <th>C&oacute;digo</th>
                                                     <th>Nombre</th>
                                                     <th>Nota</th>
-                                                    <th class="text-right">Ver</th>
+                                                    <th >Ver</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -107,11 +107,13 @@ $codigo = $_SESSION['codigo'];
                                                                 <td><?php echo $estudiante['nombre'] ?></td>
                                                                 <td><?php echo $estudiante['nota'] ?></td>
                                                                 <td>
-                                                                    <div class="table-data-feature row">
-                                                                        <div class="col-md-3"></div>
-                                                                        <div class="col-md-6"><button class="item" data-toggle="tooltip" data-placement="top" title="Editar nota">
+                                                                    <div class="table-data-feature">
+                                                                        <div class="col-md-3">
+                                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Editar nota">
                                                                                 <i class="zmdi zmdi-edit"></i>
-                                                                            </button></div>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="col-md-6"></div>
                                                                         <div class="col-md-3"></div>
                                                                     </div>
                                                                 </td>
