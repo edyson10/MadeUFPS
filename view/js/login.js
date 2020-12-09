@@ -26,7 +26,7 @@ $(document).ready(function() {
                         }, 2000);
                     } else if (resultado.rol == 'docente') {
                         setTimeout(function() {
-                            window.location.href = "view/Docente.php";
+                            window.location.href = "view/Registrar-notas.php";
                         }, 2000);
                     }
                 } else if (resultado.respuesta == 'error') {

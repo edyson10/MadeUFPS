@@ -45,18 +45,18 @@ $codigo = $_SESSION['codigo'];
                                     <div class="card-header">
                                         Actividades
                                     </div>
-                                    <div class="card-body card-block">
-                                        <form action="" method="post" class="">
+                                    <form name="FormCargaCurriculo" id="FormCargaCurriculo">
+                                        <div class="card-body card-block">
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
                                                     <label for="file-input" class=" form-control-label">Archivo</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="file" id="file-input" name="file-input" class="form-control-file">
+                                                    <input type="file" id="microcurriculo" name="microcurriculo" class="form-control-file">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <select id="buscarMateria" name="buscarMateria" class="form-control">
+                                                <select id="materiaActividad" name="materiaActividad" class="form-control">
                                                     <option value="Seleccione">Seleccione materia</option>
                                                     <?php
                                                     try {
@@ -72,13 +72,13 @@ $codigo = $_SESSION['codigo'];
                                                     <?php } ?>
                                                 </select>
                                             </div>
-                                        </form>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary btn-sm">
-                                            <i class="fa fa-upload"></i> Cargar actividad
-                                        </button>
-                                    </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="button" id="btnEnviar" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-upload"></i> Cargar actividad
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

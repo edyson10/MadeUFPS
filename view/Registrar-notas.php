@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 $codigo = $_SESSION['codigo'];
@@ -81,7 +81,7 @@ $codigo = $_SESSION['codigo'];
                                                     <th>C&oacute;digo</th>
                                                     <th>Nombre</th>
                                                     <th>Nota</th>
-                                                    <th >Ver</th>
+                                                    <th>Ver</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -107,15 +107,8 @@ $codigo = $_SESSION['codigo'];
                                                                 <td><?php echo $estudiante['nombre'] ?></td>
                                                                 <td><?php echo $estudiante['nota'] ?></td>
                                                                 <td>
-                                                                    <div class="table-data-feature">
-                                                                        <div class="col-md-3">
-                                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Editar nota">
-                                                                                <i class="zmdi zmdi-edit"></i>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="col-md-6"></div>
-                                                                        <div class="col-md-3"></div>
-                                                                    </div>
+                                                                    <a class="itemm fas fa-edit" onclick="verNota('<?php echo $estudiante['codigo'] ?>','<?php echo $materia ?>')" title="Editar nota" data-toggle="modal" data-target="#mediumModal">
+                                                                    </a>
                                                                 </td>
                                                             </tr>
                                                 <?php }
@@ -147,7 +140,54 @@ $codigo = $_SESSION['codigo'];
             <!-- END PAGE CONTAINER-->
         </div>
     </div>
-
+    <!-- modal medium -->
+    <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mediumModalLabel">Nota del estudiante</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form >
+                    <div class="modal-body">
+                        <p>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="hf-email" class=" form-control-label">C&oacute;digo estudiante</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="codigoEstudiante" name="codigoEstudiante" placeholder="" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="hf-password" class=" form-control-label">Nombre</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="estudiante" name="estudiante" placeholder="" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="hf-password" class=" form-control-label">Nota</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="notaEstudiante" name="notaEstudiante" placeholder="" class="form-control">
+                                </div>
+                            </div>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" onclick="actualizarNota('<?php echo $materia ?>','codigoEstudiante', 'notaEstudiante')">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- end modal medium -->
     <!-- Footer -->
     <?php require_once 'footer.php'; ?>
 </body>

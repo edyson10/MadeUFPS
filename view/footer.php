@@ -27,3 +27,7 @@
 <script src="js/registro.js"></script>
 
 <script src="js/actualizar.js"></script>
+
+<script src="js/ver.js"></script>
+
+<script src="js/evidencia.js"></script>

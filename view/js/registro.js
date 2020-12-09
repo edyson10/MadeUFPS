@@ -114,3 +114,50 @@ $(document).ready(function() {
         });
     });
 });
+/**
+ * Método para registrar un curso nuevo
+ */
+$(document).ready(function() {
+    $("#FormAsignarEstudiante").on('submit', function(e) {
+        e.preventDefault();
+        var datos = $(this).serializeArray();
+        console.log(datos);
+        $.ajax({
+            url: $(this).attr("action"),
+            data: datos,
+            type: $(this).attr("method"),
+            success: function(data) {
+                console.log(data);
+                var resultado = JSON.parse(data);
+                console.log('->' + resultado.respuesta);
+                if (resultado.respuesta == 'seleccione') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Ups!',
+                        text: 'Seleccione una asignatura y/o estudiante correctos'
+                    })
+                } else if (resultado.respuesta == 'estudiante') {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Advertencia',
+                        text: 'No se pueden registrar más estudiantes'
+                    })
+
+                } else if (resultado.respuesta == 'exito') {
+                    Swal.fire(
+                        'Correcto!',
+                        'Se ha asignado correctamente el estudiante',
+                        'success'
+                    )
+                    document.getElementById("FormAsignarEstudiante").reset();
+                } else if (resultado.respuesta == 'error') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un error al asignar el estudiante'
+                    })
+                }
+            }
+        });
+    });
+});

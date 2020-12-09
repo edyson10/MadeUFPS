@@ -44,14 +44,14 @@ $codigo = $_SESSION['codigo'];
                                 <div class="card">
                                     <div class="card-header">Asignar</div>
                                     <div class="card-body card-block">
-                                        <form action="" method="post" class="">
+                                        <form id="FormAsignarEstudiante" name="FormAsignarEstudiante" action="../model/asignarEstudiante.php" method="post">
                                             <div class="form-group">
                                                 <select id="materiaAsignar" name="materiaAsignar" class="form-control">
                                                     <option value="Seleccione">Seleccione la materia</option>
                                                     <?php
                                                     try {
                                                         require_once '../controller/conexion.php';
-                                                        $sql = "SELECT id_curso, nombre FROM curso WHERE docente = '$codigo'";
+                                                        $sql = "SELECT id_curso, nombre FROM curso ORDER BY id_curso ASC";
                                                         $resultado = $conexion->query($sql);
                                                     } catch (Exception $e) {
                                                         $error = $e->getMessage();
