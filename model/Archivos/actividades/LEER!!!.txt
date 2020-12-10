@@ -1,0 +1,1 @@
+En phpmyadmin crear una base de datos nueva con nombre "web" e importar el archivo que se encuentra dentro de la carpeta llamado web.sql

@@ -3,6 +3,7 @@
 require_once '../controller/conexion.php';
 
 //die(json_encode($_POST));
+
 session_start();
 $codigo = $_SESSION['codigo'];
 $direccion = $_POST['direccion'];

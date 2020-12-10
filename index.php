@@ -70,7 +70,7 @@
                                 <div class="login-checkbox">
                                     <label></label>
                                     <label>
-                                        <a href="#">¿Olvidaste su contrase&ntilde;a?</a>
+                                        <a href="view/Recuperar-contrasena.php">¿Olvidaste su contrase&ntilde;a?</a>
                                     </label>
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Iniciar sesi&oacute;n</button>

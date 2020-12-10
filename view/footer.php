@@ -31,3 +31,9 @@
 <script src="js/ver.js"></script>
 
 <script src="js/evidencia.js"></script>
+
+<script src="js/cargaModal.js"></script>
+
+<script src="js/app.js"></script>
+
+<script src="js/forgot_pass.js"></script>

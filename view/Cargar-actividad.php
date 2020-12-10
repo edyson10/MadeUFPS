@@ -72,6 +72,23 @@ $codigo = $_SESSION['codigo'];
                                                     <?php } ?>
                                                 </select>
                                             </div>
+                                            <div class="form-group">
+                                                <select id="actividad" name="actividad" class="form-control">
+                                                    <option value="Seleccione">Seleccione</option>
+                                                    <option value="1">Actividad 1</option>
+                                                    <option value="2">Actividad 2</option>
+                                                    <option value="3">Actividad 3</option>
+                                                    <option value="4">Actividad 4</option>
+                                                </select>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="fecha" class=" form-control-label">Fecha final</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="date" id="fecha_final" name="fecha_final" class="form-control-file">
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="card-footer">
                                             <button type="button" id="btnEnviar" class="btn btn-primary btn-sm">

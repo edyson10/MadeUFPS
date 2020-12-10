@@ -6,11 +6,17 @@ const inputFile = document.querySelector("#microcurriculo");
 btnEnviar.addEventListener("click", () => {
     if (inputFile.files.length > 0) {
         let formData = new FormData();
-        console.log(formData);
+        //console.log(formData);
         var idprovincia = document.getElementById("materiaActividad");
         var pro = idprovincia.options[idprovincia.selectedIndex].value;
-        console.log(pro);
+        var fecha = document.getElementById("fecha_final").value;
+        var idActividad = document.getElementById("actividad");
+        var actividad = idActividad.options[idActividad.selectedIndex].value;
+        //console.log(actividad);
+        //console.log(pro);
+        formData.append("fecha", fecha);
         formData.append("materia", pro);
+        formData.append("actividad", actividad);
         formData.append("archivo", inputFile.files[0]); // En la posición 0; es decir, el primer elemento
         fetch("../model/cargarMicrocurriculo.php", {
                 method: 'POST',

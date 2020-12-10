@@ -142,7 +142,6 @@ $(document).ready(function() {
                         title: 'Advertencia',
                         text: 'No se pueden registrar más estudiantes'
                     })
-
                 } else if (resultado.respuesta == 'exito') {
                     Swal.fire(
                         'Correcto!',

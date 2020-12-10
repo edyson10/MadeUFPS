@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2020 a las 04:50:05
+-- Tiempo de generación: 10-12-2020 a las 05:24:46
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -76,8 +76,19 @@ INSERT INTO `cargar_actividad` (`id_cargar`, `ruta_actividad`, `id_grupo_alumno`
 CREATE TABLE `cargar_microcurriculo` (
   `id_carga` int(11) NOT NULL,
   `id_curso` int(11) NOT NULL,
-  `ruta_archivo` varchar(100) NOT NULL
+  `ruta_archivo` varchar(100) NOT NULL,
+  `fecha_final` date NOT NULL,
+  `num_actividad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `cargar_microcurriculo`
+--
+
+INSERT INTO `cargar_microcurriculo` (`id_carga`, `id_curso`, `ruta_archivo`, `fecha_final`, `num_actividad`) VALUES
+(13, 12, 'Archivos/actividades/LEER!!!.txt', '2020-12-09', 1),
+(14, 123, 'Archivos/actividades/.htaccess', '2020-12-16', 1),
+(15, 12, 'Archivos/actividades/index.php', '2020-12-09', 2);
 
 -- --------------------------------------------------------
 
@@ -97,8 +108,9 @@ CREATE TABLE `curso` (
 --
 
 INSERT INTO `curso` (`id_curso`, `nombre`, `docente`, `num_estudiantes`) VALUES
-(123, 'bases de datos', 1151464, 3),
-(987, 'seguridad', 1151464, 10),
+(12, 'web', 1151464, 11),
+(123, 'bases de datos', 1151464, 10),
+(987, 'seguridad', 1151464, 9),
 (8888, 'movil', 1151464, 3);
 
 -- --------------------------------------------------------
@@ -143,7 +155,12 @@ CREATE TABLE `grupo_alumno` (
 
 INSERT INTO `grupo_alumno` (`idgrupo`, `id_alumno`, `id_curso`, `nota`) VALUES
 (1157, 9638, 987, 4),
-(1158, 9638, 123, 3);
+(1158, 9638, 123, 4.3),
+(1159, 9638, 12, 1),
+(1160, 9, 123, 0),
+(1161, 10, 987, 0),
+(1162, 10, 123, 0),
+(1163, 9638, 123, 0);
 
 -- --------------------------------------------------------
 
@@ -156,7 +173,7 @@ CREATE TABLE `persona` (
   `nombre` varchar(50) NOT NULL,
   `codigo` int(11) NOT NULL,
   `direccion` varchar(50) NOT NULL,
-  `telefono` int(11) NOT NULL,
+  `telefono` varchar(20) NOT NULL,
   `correo` varchar(50) NOT NULL,
   `rol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -166,9 +183,12 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`documento`, `nombre`, `codigo`, `direccion`, `telefono`, `correo`, `rol`) VALUES
-(1090, 'adriana quijano', 1151464, 'avenida 8 ', 2147483647, 'edysonleal@gmail.com', 2),
-(1234, 'edyson', 1234, 'cucuta', 3154871, 'edysonleal3@gmail.com', 1),
-(9638, 'duvan leal', 9638, 'avenida 8 ', 2147483647, 'adriana@gmail.com', 3);
+(0, 'Matias', 10, 'calle 17', '350892', 'matiasleal@ufps.edu.co', 3),
+(9, 'EEEEE', 9, 'Cucuta', '2147483647', 'edysonleal30@gmail.com', 3),
+(12, 'edyson', 8017182, 'Calle 17 # 7-70', '3444444', 'duvanleal65@gmail.com', 2),
+(1090, 'adriana quijano', 1151464, 'avenida 8 ', '2147483647', 'edysonleal@gmail.com', 2),
+(1234, 'edyson', 1234, 'calle', '12345566', 'edysonfabianlm@ufps.edu.co', 1),
+(9638, 'duvan leal', 9638, 'avenida 8 ', '2147483647', 'adriana@gmail.com', 3);
 
 -- --------------------------------------------------------
 
@@ -272,6 +292,7 @@ ALTER TABLE `grupo_alumno`
 ALTER TABLE `persona`
   ADD PRIMARY KEY (`documento`),
   ADD UNIQUE KEY `codigo` (`codigo`),
+  ADD UNIQUE KEY `correo` (`correo`),
   ADD KEY `rol` (`rol`);
 
 --
@@ -301,7 +322,7 @@ ALTER TABLE `actividad`
 -- AUTO_INCREMENT de la tabla `calificar_estudiante`
 --
 ALTER TABLE `calificar_estudiante`
-  MODIFY `id_calificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_calificacion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `cargar_actividad`
@@ -313,7 +334,7 @@ ALTER TABLE `cargar_actividad`
 -- AUTO_INCREMENT de la tabla `cargar_microcurriculo`
 --
 ALTER TABLE `cargar_microcurriculo`
-  MODIFY `id_carga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_carga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `descargar_actividad`
@@ -331,7 +352,7 @@ ALTER TABLE `evaluar_actividad`
 -- AUTO_INCREMENT de la tabla `grupo_alumno`
 --
 ALTER TABLE `grupo_alumno`
-  MODIFY `idgrupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1159;
+  MODIFY `idgrupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1164;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -359,7 +380,7 @@ ALTER TABLE `cargar_actividad`
 -- Filtros para la tabla `cargar_microcurriculo`
 --
 ALTER TABLE `cargar_microcurriculo`
-  ADD CONSTRAINT `cargar_microcurriculo_ibfk_1` FOREIGN KEY (`id_curso`) REFERENCES `grupo_alumno` (`id_curso`);
+  ADD CONSTRAINT `cargar_microcurriculo_ibfk_1` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`);
 
 --
 -- Filtros para la tabla `curso`

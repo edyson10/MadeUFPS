@@ -3,6 +3,12 @@
 session_start();
 $codigo = $_SESSION['codigo'];
 
+require_once '../controller/conexion.php';
+$sql = "SELECT cm.ruta_archivo, cm.fecha_final, cm.num_actividad FROM cargar_microcurriculo cm 
+INNER JOIN curso ON cm.id_curso = curso.id_curso INNER JOIN grupo_alumno ga ON ga.id_curso = curso.id_curso 
+WHERE ga.id_alumno = '$codigo' AND ga.id_curso = '12'";
+$resultado = $conexion->query($sql);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -66,16 +72,22 @@ $codigo = $_SESSION['codigo'];
                                                         <td>
                                                             <div class="table-data-feature row">
                                                                 <div class="col-md-4"></div>
-                                                                <div class="col-md-4"><button class="item" data-toggle="tooltip" data-placement="top" title="Editar nota">
+                                                                <div class="col-md-4">
+                                                                    <a class="item" title="Ver actividades" data-toggle="modal" data-target="#mediumModal">
                                                                         <i class="zmdi zmdi-eye"></i>
-                                                                    </button></div>
-                                                                <div class="col-md-4"></div>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <a class="item" title="Descargar actividad" onclick="descargar('<?php echo $codigo ?>', '<?php echo $estudiante['id_curso'] ?>')">
+                                                                        <i class="zmdi zmdi-download"></i>
+                                                                    </a>
+                                                                </div>
                                                             </div>
                                                         </td>
                                                     </tr>
                                             <?php }
                                             } catch (Exception $e) {
-                                                $error = $e->getMessage()();
+                                                $error = $e->getMessage();
                                             }
                                             mysqli_close($conexion);
                                             ?>
@@ -97,6 +109,102 @@ $codigo = $_SESSION['codigo'];
                 </div>
             </div>
         </div>
+
+        <!-- modal medium -->
+        <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="mediumModalLabel">Actividades</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row m-t-30">
+                            <div class="col-md-12">
+                                <!-- DATA TABLE-->
+                                <div class="table-responsive m-b-40">
+                                    <table class="table table-borderless table-data3">
+                                        <thead>
+                                            <tr>
+                                                <th>Actividad</th>
+                                                <th>Fecha final</th>
+                                                <th>Opciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Actividad 1</td>
+                                                <td>2020-12-09</td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Descargar">
+                                                            <i class="zmdi zmdi-download"></i>
+                                                        </a>
+                                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Enviar">
+                                                            <i class="zmdi zmdi-upload"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Actividad 2</td>
+                                                <td>2020-12-12</td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Descargar">
+                                                            <i class="zmdi zmdi-download"></i>
+                                                        </a>
+                                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Enviar">
+                                                            <i class="zmdi zmdi-upload"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Actividad 3</td>
+                                                <td>2020-12-24</td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Descargar">
+                                                            <i class="zmdi zmdi-download"></i>
+                                                        </a>
+                                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Enviar">
+                                                            <i class="zmdi zmdi-upload"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Actividad 4</td>
+                                                <td>2020-12-31</td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Descargar">
+                                                            <i class="zmdi zmdi-download"></i>
+                                                        </a>
+                                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Enviar">
+                                                            <i class="zmdi zmdi-upload"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- END DATA TABLE-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <!--<button type="button" class="btn btn-primary">Confirm</button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end modal medium -->
         <!-- Footer -->
         <?php require_once 'footer.php'; ?>
 </body>
